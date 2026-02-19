@@ -51,6 +51,9 @@ on:
       pppoe_password:
         description: "宽带密码 (若启用PPPoE)"
         required: false
+  push:
+    branches:
+      - dev
 
 jobs:
   build_immortalwrt:
