@@ -91,6 +91,9 @@ fi
 echo "$(date '+%Y-%m-%d %H:%M:%S') - Building image with the following packages:"
 echo "$PACKAGES"
 
+# 替换官方下载源为北大镜像，避免官方源不可用导致签名文件下载失败
+sed -i 's|https://downloads.immortalwrt.org/|https://mirrors.pku.edu.cn/immortalwrt/|g' repositories.conf
+
 make image PROFILE="generic" PACKAGES="$PACKAGES" FILES="/home/build/immortalwrt/files" ROOTFS_PARTSIZE=$PROFILE
 
 if [ $? -ne 0 ]; then
